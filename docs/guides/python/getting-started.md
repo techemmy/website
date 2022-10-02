@@ -163,7 +163,7 @@ def main(page):
 
 flet.app(target=main)
 ```
-<img src="/img/docs/getting-started/simple-ToDo.png" className="screenshot-100" />
+<img src="/img/docs/getting-started/simple-ToDo.gif" className="screenshot-100" />
 
 
 :::info
@@ -236,7 +236,7 @@ def main(page):
 
 flet.app(target=main)
 ```
-<img src="/img/docs/getting-started/control-refs.png" className="screenshot-100" />
+<img src="/img/docs/getting-started/control-refs.gif" className="screenshot-100" />
 
 
 In the very beginning of `main()` method we create three controls which we are going to use in button's `on_click` handler: two `TextField` for first and last names and a `Column` - container for greeting messages. We create controls with all their properties set and in the end of `main()` method, in `page.add()` call, we use their references (variables).
@@ -312,7 +312,7 @@ def main(page):
 
 flet.app(target=main)
 ```
-<img src="/img/docs/getting-started/control-refs-rewritten.png" className="screenshot-100" />
+<img src="/img/docs/getting-started/control-refs-rewritten.gif" className="screenshot-100" />
 
 Now we can clearly see in `page.add()` the structure of the page and all the controls it's built of.
 
