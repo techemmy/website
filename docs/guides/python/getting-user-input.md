@@ -87,7 +87,30 @@ flet.app(target=main)
 
 ## Checkbox
 
-TBD
+The [Checkbox](/docs/controls/checkbox) control provides you with various properties and events emmiters for ease of use.
+
+Let's create a one checkbox ToDo:
+
+```python title="todocheck.py"
+import flet
+from flet import Checkbox, Text
+
+
+def main(page):
+    def checkbox_changed(e):
+        output_text.value = (
+            f"You have learned how to ski :  {todo_check.value}."
+        )
+        page.update()
+
+    output_text= Text()
+    todo_check = Checkbox(label="ToDo: Learn how to use ski", value=False, on_change=checkbox_changed)
+    page.add(todo_check, output_text)
+
+flet.app(target=main)
+```
+<img src="/img/docs/getting-started/getting-user-input-checkbox.png" className="screenshot-50" />
+
 
 ## Dropdown
 
