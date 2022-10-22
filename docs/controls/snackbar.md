@@ -46,6 +46,8 @@ flet.app(target=main)
   </TabItem>
 </Tabs>
 
+<img src="/img/docs/controls/snackbar/snackbar-with-custom-content.gif"/>
+
 ## Properties
 
 ### `open`
@@ -67,6 +69,10 @@ The action should not be "dismiss" or "cancel".
 ### `bgcolor`
 
 SnackBar background color.
+
+### `action_color`
+
+The foreground color of action button.
 
 ## Events
 

@@ -41,6 +41,8 @@ flet.app(target=main)
   </TabItem>
 </Tabs>
 
+<img src="/img/docs/controls/textfield/basic-textfield.gif"/>
+
 ### TextField with `on_change` event
 
 <Tabs groupId="language">
@@ -68,6 +70,8 @@ flet.app(target=main)
   </TabItem>
 </Tabs>
 
+<img src="/img/docs/controls/textfield/textfield-with-change-event.gif"/>
+
 ### Password with reveal button
 
 <Tabs groupId="language">
@@ -88,6 +92,8 @@ flet.app(target=main)
 ```
   </TabItem>
 </Tabs>
+
+<img src="/img/docs/controls/textfield/textfield-with-password.gif"/>
 
 ### Multiline TextFields
 
@@ -119,6 +125,8 @@ flet.app(target=main)
 ```
   </TabItem>
 </Tabs>
+
+<img src="/img/docs/controls/textfield/textfield-with-multiline.gif"/>
 
 ### Underlined and borderless TextFields
 
@@ -152,6 +160,8 @@ flet.app(target=main)
   </TabItem>
 </Tabs>
 
+<img src="/img/docs/controls/textfield/textfield-with-underline-and-borderless.gif"/>
+
 ### TextFields with prefixes and suffixes
 
 <Tabs groupId="language">
@@ -183,6 +193,8 @@ flet.app(target=main)
 ```
   </TabItem>
 </Tabs>
+
+<img src="/img/docs/controls/textfield/textfield-with-prefix-and-suffix.gif"/>
 
 ## Properties
 
@@ -345,11 +357,19 @@ Text that suggests what sort of input the field accepts.
 
 Displayed on top of the input when the it's empty and either (a) `label` is null or (b) the input has the focus.
 
+### `hint_style`
+
+The style to use for `hint_text`.
+
 ### `helper_text`
 
 Text that provides context about the input's value, such as how the value will be used.
 
 If non-null, the text is displayed below the input decorator, in the same location as `error_text`. If a non-null `error_text` value is specified then the helper text is not shown.
+
+### `helper_style`
+
+The style to use for `helper_text`.
 
 ### `counter_text`
 
@@ -357,11 +377,19 @@ Optional text to place below the line as a character count.
 
 If null or an empty string and counter isn't specified, then nothing will appear in the counter's location.
 
+### `counter_style`
+
+The style to use for `counter_text`.
+
 ### `error_text`
 
 Text that appears below the input border.
 
 If non-null, the border's color animates to red and the `helper_text` is not shown.
+
+### `error_style`
+
+The style to use for `error_text`.
 
 ### `prefix`
 
@@ -381,6 +409,10 @@ An icon that appears before the `prefix` or `prefix_text` and before the editabl
 
 Optional text `prefix` to place on the line before the input.
 
+### `prefix_style`
+
+The style to use for `prefix_text`.
+
 ### `suffix`
 
 Optional `Control` to place on the line after the input.
@@ -398,6 +430,22 @@ An icon that appears after the editable part of the text field and after the `su
 ### `suffix_text`
 
 Optional text `suffix` to place on the line after the input.
+
+### `suffix_style`
+
+The style to use for `suffix_text`.
+
+### `cursor_width`
+
+Sets cursor width.
+
+### `cursor_height`
+
+Sets cursor height.
+
+### `cursor_radius`
+
+Sets cursor radius.
 
 ## Methods
 

@@ -43,6 +43,8 @@ flet.app(target=main)
   </TabItem>
 </Tabs>
 
+<img src="/img/docs/controls/checkbox/basic-checkbox.gif"/>
+
 ### Checkbox with `on_change` event
 
 <Tabs groupId="language">
@@ -67,6 +69,8 @@ flet.app(target=main)
   </TabItem>
 </Tabs>
 
+<img src="/img/docs/controls/checkbox/checkbox-with-change-event.gif"/>
+
 ## Properties
 
 ### `value`
@@ -90,6 +94,40 @@ Set to `left` if `label` should be displayed on the left side of the checkbox; o
 ### `autofocus`
 
 True if the control will be selected as the initial focus. If there is more than one control on a page with autofocus set, then the first one added to the page will get focus.
+
+### `check_color`
+
+The color to use for the check icon when this checkbox is checked.
+
+### `fill_color`
+
+The color that fills the checkbox, in all Material states:
+
+* `hovered`
+* `focused`
+* `pressed`
+* `dragged`
+* `selected`
+* `scrolledUnder`
+* `disabled`
+* `error`
+* `""` (empty string) - fallback state, meaning "all other states".
+
+To configure checkbox fill color for all Material states set `fill_color` value to a literal, for example:
+
+```python
+chk.fill_color=colors.GREEN
+```
+
+To configure fill color for specific Material states set its value to a dictionary where the key is state name. For example, to configure different fill colors for `hovered` and `focused` states and another color for all other states:
+
+```python
+chk.fill_color={
+    "hovered": colors.GREEN,
+    "focused": colors.RED,
+    "": colors.BLACK,
+}
+```
 
 ## Events
 
