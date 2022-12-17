@@ -6,7 +6,7 @@ module.exports = {
       label: 'Python Guide',
       items: [
         'guides/python/getting-started',
-        'guides/python/displaying-data',
+        //'guides/python/displaying-data',
         'guides/python/getting-user-input',
         'guides/python/keyboard-shortcuts',
         'guides/python/large-lists',
@@ -77,6 +77,8 @@ module.exports = {
             'controls/listview',
             'controls/listtile',
             'controls/gridview',
+            'controls/responsiverow',
+            'controls/datatable',
             'controls/tabs',
             'controls/card',
             'controls/divider',
@@ -93,7 +95,7 @@ module.exports = {
           items: [
             'controls/appbar',
             'controls/navigationrail',
-            //'controls/navigationbar',
+            'controls/navigationbar',
           ]
         },
         {
@@ -157,7 +159,20 @@ module.exports = {
           items: [
             'controls/alertdialog',
             'controls/banner',
+            'controls/bottomsheet',
             'controls/snackbar',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Charts',
+          link: {
+            type: 'generated-index',
+            slug: 'controls/charts'
+          },
+          items: [
+            'controls/matplotlibchart',
+            'controls/plotlychart',
           ]
         },
         {
@@ -184,9 +199,14 @@ module.exports = {
             'controls/dragtarget',
             'controls/filepicker',
             'controls/gesturedetector',
+            'controls/transparentpointer',
+            'controls/hapticfeedback',
             'controls/semantics',
             'controls/shadermask',
+            'controls/shakedetector',
+            'controls/tooltip',
             'controls/windowdragarea',
+            'controls/fletapp',
           ]
         },
       ]

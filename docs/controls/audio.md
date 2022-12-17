@@ -24,20 +24,19 @@ Autoplay works in desktop, mobile apps and Safari browser, but doesn't work in C
 :::
 
 ```python
-import flet
-from flet import Audio, ElevatedButton, Page, Text
+import flet as ft
 
-def main(page: Page):
-    audio1 = Audio(
+def main(page: ft.Page):
+    audio1 = ft.Audio(
         src="https://luan.xyz/files/audio/ambient_c_motion.mp3", autoplay=True
     )
     page.overlay.append(audio1)
     page.add(
-        Text("This is an app with background audio."),
-        ElevatedButton("Stop playing", on_click=lambda _: audio1.pause()),
+        ft.Text("This is an app with background audio."),
+        ft.ElevatedButton("Stop playing", on_click=lambda _: audio1.pause()),
     )
 
-flet.app(target=main)
+ft.app(target=main)
 ```
   </TabItem>
 </Tabs>
@@ -48,12 +47,11 @@ flet.app(target=main)
   <TabItem value="python" label="Python" default>
 
 ```python
-import flet
-from flet import Audio, ElevatedButton, Page, Row, Text
+import flet as ft
 
 url = "https://github.com/mdn/webaudio-examples/blob/main/audio-analyser/viper.mp3?raw=true"
 
-def main(page: Page):
+def main(page: ft.Page):
     def volume_down(_):
         audio1.volume -= 0.1
         audio1.update()
@@ -70,7 +68,7 @@ def main(page: Page):
         audio1.balance += 0.1
         audio1.update()
 
-    audio1 = Audio(
+    audio1 = ft.Audio(
         src=url,
         autoplay=False,
         volume=1,
@@ -83,46 +81,38 @@ def main(page: Page):
     )
     page.overlay.append(audio1)
     page.add(
-        ElevatedButton("Play", on_click=lambda _: audio1.play()),
-        ElevatedButton("Pause", on_click=lambda _: audio1.pause()),
-        ElevatedButton("Resume", on_click=lambda _: audio1.resume()),
-        ElevatedButton("Release", on_click=lambda _: audio1.release()),
-        ElevatedButton("Seek 2s", on_click=lambda _: audio1.seek(2000)),
-        Row(
+        ft.ElevatedButton("Play", on_click=lambda _: audio1.play()),
+        ft.ElevatedButton("Pause", on_click=lambda _: audio1.pause()),
+        ft.ElevatedButton("Resume", on_click=lambda _: audio1.resume()),
+        ft.ElevatedButton("Release", on_click=lambda _: audio1.release()),
+        ft.ElevatedButton("Seek 2s", on_click=lambda _: audio1.seek(2000)),
+        ft.Row(
             [
-                ElevatedButton("Volume down", on_click=volume_down),
-                ElevatedButton("Volume up", on_click=volume_up),
+                ft.ElevatedButton("Volume down", on_click=volume_down),
+                ft.ElevatedButton("Volume up", on_click=volume_up),
             ]
         ),
-        Row(
+        ft.Row(
             [
-                ElevatedButton("Balance left", on_click=balance_left),
-                ElevatedButton("Balance right", on_click=balance_right),
+                ft.ElevatedButton("Balance left", on_click=balance_left),
+                ft.ElevatedButton("Balance right", on_click=balance_right),
             ]
         ),
-        ElevatedButton(
+        ft.ElevatedButton(
             "Get duration", on_click=lambda _: print("Duration:", audio1.get_duration())
         ),
-        ElevatedButton(
+        ft.ElevatedButton(
             "Get current position",
             on_click=lambda _: print("Current position:", audio1.get_duration()),
         ),
     )
 
-flet.app(target=main)
+ft.app(target=main)
 ```
   </TabItem>
 </Tabs>
 
 ## Properties
-
-### `src`
-
-Sets the URL to the audio file. It could be an asset URL, see [Image.src](/docs/controls/image#src) for more information about assets.
-
-### `src_base64`
-
-Sets the contents of audio file encoded in base-64 format.
 
 ### `autoplay`
 
@@ -131,12 +121,6 @@ Starts playing audio as soon as audio control is added to a page.
 :::note
 Autoplay works in desktop, mobile apps and Safari browser, but doesn't work in Chrome/Edge.
 :::
-
-### `volume`
-
-Sets the volume (amplitude).
-
-0 is mute and 1 is the max volume. The values between 0 and 1 are linearly interpolated.
 
 ### `balance`
 
@@ -147,6 +131,14 @@ Sets the stereo balance.
 :::note
 Setting balance is supported on Windows and Linux only.
 :::
+
+### `get_current_position()`
+
+Returns the current position in milliseconds.
+
+### `get_duration()`
+
+Returns the duration of audio in milliseconds.
 
 ### `playback_rate`
 
@@ -160,24 +152,32 @@ Sets the release mode. The following values are supported:
 * `ReleaseMode.LOOP` - Keeps buffered data and plays again after completion, creating a loop. Notice that calling stop method is not enough to release the resources when this mode is being used.
 * `ReleaseMode.STOP` - Stops audio playback but keep all resources intact. Use this if you intend to play again later.
 
+### `src`
+
+Sets the URL to the audio file. It could be an asset URL, see [Image.src](/docs/controls/image#src) for more information about assets.
+
+### `src_base64`
+
+Sets the contents of audio file encoded in base-64 format.
+
 ## Methods
-
-### `play()`
-
-Starts playing audio for the beginning.
 
 ### `pause()`
 
 Stops playing audio.
 
-### `resume()`
+### `play()`
 
-Resumes playing audio from the current position.
+Starts playing audio for the beginning.
 
 ### `release()`
 
 Stops playing and releases the resources associated with this audio control.
 The resources are going to be fetched or buffered again as soon as you call `resume()` or change the source.
+
+### `resume()`
+
+Resumes playing audio from the current position.
 
 ### `seek()`
 
@@ -187,25 +187,31 @@ Method arguments:
 
 * `position_milliseconds` - desired position in milliseconds.
 
-### `get_duration()`
+### `volume`
 
-Returns the duration of audio in milliseconds.
+Sets the volume (amplitude).
 
-### `get_current_position()`
-
-Returns the current position in milliseconds.
+0 is mute and 1 is the max volume. The values between 0 and 1 are linearly interpolated.
 
 ## Events
-
-### `on_loaded`
-
-Fires when an audio is loaded/buffered.
 
 ### `on_duration_changed`
 
 Fires as soon as audio duration is available (it might take a while to download or buffer it).
 
 Event's `e.data` contains audio duration in milliseconds.
+
+### `on_loaded`
+
+Fires when an audio is loaded/buffered.
+
+### `on_position_changed`
+
+Fires when audio position is changed. Will continuously update the position of the playback every 1 second if the status is playing. Can be used for a progress bar.
+
+### `on_seek_complete`
+
+Fires on seek completions. An event is going to be sent as soon as the audio seek is finished.
 
 ### `on_state_changed`
 
@@ -215,11 +221,3 @@ Fires when audio player state changes. Event's `e.data` contains one of the foll
 * `playing`
 * `paused`
 * `completed`
-
-### `on_position_changed`
-
-Fires when audio position is changed. Will continuously update the position of the playback every 1 second if the status is playing. Can be used for a progress bar.
-
-### `on_seek_complete`
-
-Fires on seek completions. An event is going to be sent as soon as the audio seek is finished.

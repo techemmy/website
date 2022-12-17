@@ -15,21 +15,20 @@ import TabItem from '@theme/TabItem';
 
 ### Drag and drop colors
 
-<img src="/img/docs/controls/drag-and-drop/drag-and-drop-colors.gif"className="screenshot-50" />
+<img src="/img/docs/controls/drag-and-drop/drag-and-drop-colors.gif" className="screenshot-50" />
 
 <Tabs groupId="language">
   <TabItem value="python" label="Python" default>
 
 ```python
-import flet
-from flet import Column, Container, Draggable, DragTarget, Page, Row, border, colors
+import flet as ft
 
-def main(page: Page):
+def main(page: ft.Page):
     page.title = "Drag and Drop example"
 
     def drag_will_accept(e):
-        e.control.content.border = border.all(
-            2, colors.BLACK45 if e.data == "true" else colors.RED
+        e.control.content.border = ft.border.all(
+            2, ft.colors.BLACK45 if e.data == "true" else ft.colors.RED
         )
         e.control.update()
 
@@ -44,52 +43,52 @@ def main(page: Page):
         e.control.update()
 
     page.add(
-        Row(
+        ft.Row(
             [
-                Column(
+                ft.Column(
                     [
-                        Draggable(
+                        ft.Draggable(
                             group="color",
-                            content=Container(
+                            content=ft.Container(
                                 width=50,
                                 height=50,
-                                bgcolor=colors.CYAN,
+                                bgcolor=ft.colors.CYAN,
                                 border_radius=5,
                             ),
-                            content_feedback=Container(
+                            content_feedback=ft.Container(
                                 width=20,
                                 height=20,
-                                bgcolor=colors.CYAN,
+                                bgcolor=ft.colors.CYAN,
                                 border_radius=3,
                             ),
                         ),
-                        Draggable(
+                        ft.Draggable(
                             group="color",
-                            content=Container(
+                            content=ft.Container(
                                 width=50,
                                 height=50,
-                                bgcolor=colors.YELLOW,
+                                bgcolor=ft.colors.YELLOW,
                                 border_radius=5,
                             ),
                         ),
-                        Draggable(
+                        ft.Draggable(
                             group="color1",
-                            content=Container(
+                            content=ft.Container(
                                 width=50,
                                 height=50,
-                                bgcolor=colors.GREEN,
+                                bgcolor=ft.colors.GREEN,
                                 border_radius=5,
                             ),
                         ),
                     ]
                 ),
-                Container(width=100),
-                DragTarget(
+                ft.Container(width=100),
+                ft.DragTarget(
                     group="color",
-                    content=Container(
+                    content=ft.Container(
                         width=50,
                         height=50,
-                        bgcolor=colors.BLUE_GREY_100,
+                        bgcolor=ft.colors.BLUE_GREY_100,
                         border_radius=5,
                     ),
                     on_will_accept=drag_will_accept,
@@ -100,26 +99,22 @@ def main(page: Page):
         )
     )
 
-flet.app(target=main)
+ft.app(target=main)
 ```
   </TabItem>
 </Tabs>
 
 ## Properties
 
-### `group`
-
-A group this drag target belongs to. For [DragTarget](dragtarget) to accept incoming drag both `Draggable` and `DragTarget` must be in the same `group`.
-
 ### `content`
 
 The `Control` that is a visual representation of the drag target.
 
+### `group`
+
+A group this drag target belongs to. For [DragTarget](dragtarget) to accept incoming drag both `Draggable` and `DragTarget` must be in the same `group`.
+
 ## Events
-
-### `on_will_accept`
-
-Fires when draggable is dragged on top of a drag target. `data` field of event details contains `true` (String) if both `Draggable` and `DragTarget` has the same `group`; otherwise `false` (String).
 
 ### `on_accept`
 
@@ -134,3 +129,7 @@ Use `page.get_control(e.src_id)` to retrieve Control reference by its ID.
 ### `on_leave`
 
 Fires when a mouse pointer during ongoing drag event leaves the target.
+
+### `on_will_accept`
+
+Fires when draggable is dragged on top of a drag target. `data` field of event details contains `true` (String) if both `Draggable` and `DragTarget` has the same `group`; otherwise `false` (String).
